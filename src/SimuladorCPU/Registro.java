@@ -1,14 +1,14 @@
 package SimuladorCPU;
 
 public class Registro {
-    long valor;
+    private long valor;
 
     public void Registro(){
-        this.valor=0;
+        this.valor = 0;
     }
 
     public long getValor() {
-        return valor;
+        return this.valor;
     }
 
     public void setValor(long valor) {
@@ -21,4 +21,6 @@ public class Registro {
         }
         //this.valor = valor;
     }
+
+
 }
