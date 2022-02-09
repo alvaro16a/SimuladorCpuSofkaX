@@ -4,4 +4,8 @@ public class SimuladorCpu {
 
     }
 
+    private static void MOV (long Rxx, long Ryy){
+        Ryy = Rxx;
+    }
+
 }
