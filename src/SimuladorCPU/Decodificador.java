@@ -1,27 +1,31 @@
 package SimuladorCPU;
 
 public class Decodificador {
-    Instrucciones instrucciones= new Instrucciones();
-
+    private static Instrucciones instrucciones;
+    
     public Decodificador(){
-
+        instrucciones = new Instrucciones();
     }
 
-
-    public void DecodificarInstruccion(String instruccion, contadorPrograma counter){
+    public static void decodificarInstruccion(String instruccion){
+    //public void DecodificarInstruccion(String instruccion, contadorPrograma counter){
         String funcion;
+        String [] parts;
 
-        if (instruccion.charAt(3) == ' ') {
+        /*if (instruccion.charAt(3) == ' ') {
             funcion = instruccion.substring(0, 3);
         } else {
             funcion = instruccion.substring(0, 2);
         }
+        */
+        parts = instruccion.split(" ");
+        funcion = parts[0];
         //System.out.println(funcion);
 
         switch (funcion) {
 
             case "MOV": {
-
+                /*
                 String operador = instruccion.substring(4, encontrarComa(instruccion));
 
 
@@ -36,7 +40,23 @@ public class Decodificador {
                     int operador_2 = Integer.parseInt(operador);
                     instrucciones.MOV(operador_1,operador_2);
                     break;
+                }*/
+                String []operador = parts[1].split(",");
+
+                String operador_1= operador[0];
+                String operador_2 = operador[1];
+                if(operador_1.charAt(0)=='R')
+                {
+                    instrucciones.MOV(Integer.parseInt(operador_1.substring(1)),Integer.parseInt(operador_2.substring(1)));
                 }
+                else
+                {
+                    instrucciones.MOV(Long.parseLong(operador_1), Integer.parseInt(operador_2));
+                    System.out.println("MOV "+operador_1+operador);
+                  
+                }
+                
+
                 break;
             }
 
@@ -74,7 +94,7 @@ public class Decodificador {
             case "JMP": {
                 String operador = instruccion.substring(4, instruccion.length());
                 int operador_1 = Integer.parseInt(operador);
-                counter.setSiguienteInstruccion(operador_1-1);
+                //counter.setSiguienteInstruccion(operador_1-1);
                 break;
             }
             case "JZ": {
@@ -83,7 +103,7 @@ public class Decodificador {
 
                 if(instrucciones.valorRegistro(0) == 0L)
                 {
-                    counter.setSiguienteInstruccion(operador_1-1);
+                   // counter.setSiguienteInstruccion(operador_1-1);
                 }
                 break;
             }
@@ -109,5 +129,10 @@ public class Decodificador {
             }
         }
         return -1;
+    }
+
+    public static void main()
+    {
+        decodificarInstruccion("MOV R1,R5");
     }
 }
