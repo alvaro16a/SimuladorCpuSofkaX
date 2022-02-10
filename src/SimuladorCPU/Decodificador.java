@@ -1,8 +1,10 @@
 package SimuladorCPU;
 
 public class Decodificador {
-    public static void main(String args[]) {
-        String instruccion = "MOV 15653,R28";
+    public Instrucciones matriz;
+    Instrucciones instrucciones= new Instrucciones();
+
+    public void DecodificarInstruccion(String instruccion){
         String funcion;
 
         if (instruccion.charAt(3) == ' ') {
@@ -22,15 +24,13 @@ public class Decodificador {
                 try {
                     long operador_1 = Long.parseLong(operador);
                     String operador_2 = instruccion.substring(encontrarComa(instruccion) + 2, instruccion.length());
-
-                    System.out.println(operador_2);
+                    instrucciones.MOV(operador_1,Integer.parseInt(operador_2));
                 } catch (NumberFormatException e) {
                     operador = instruccion.substring(5, 7);
                     int operador_1 = Integer.parseInt(operador);
                     operador = instruccion.substring(9, 11);
                     int operador_2 = Integer.parseInt(operador);
-                    System.out.println(operador_1);
-                    System.out.println(operador_2);
+                    instrucciones.MOV(operador_1,operador_2);
                     break;
                 }
                 break;
@@ -42,28 +42,28 @@ public class Decodificador {
                 int operador_1 = Integer.parseInt(operador);
                 operador = instruccion.substring(9, 11);
                 int operador_2 = Integer.parseInt(operador);
-                System.out.println(operador);
+                instrucciones.ADD(operador_1,operador_2);
                 break;
             }
 
             case "DEC": {
                 String operador = instruccion.substring(5, instruccion.length());
                 int operador_1 = Integer.parseInt(operador);
-                System.out.println(operador_1);
+                instrucciones.DEC(operador_1);
                 break;
             }
 
             case "INC": {
                 String operador = instruccion.substring(5, instruccion.length());
                 int operador_1 = Integer.parseInt(operador);
-                System.out.println(operador_1);
+                instrucciones.INC(operador_1);
                 break;
             }
 
             case "INV": {
                 String operador = instruccion.substring(5, instruccion.length());
                 int operador_1 = Integer.parseInt(operador);
-                System.out.println(operador_1);
+                instrucciones.INV(operador_1);
                 break;
             }
 
