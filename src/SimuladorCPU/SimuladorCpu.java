@@ -22,5 +22,16 @@ public class SimuladorCpu {
         System.out.println("El resultado de la operacion es: " + decoder.getValorRegistro(42));
 
     }
+    /*public static void main(String args[])
+    {
+        decoder = new Decodificador();
+        decoder.decodificarInstruccion("MOV 5,R1");
+        decoder.decodificarInstruccion("MOV R1,R5");
+        decoder.decodificarInstruccion("ADD R02,R01");
+        decoder.decodificarInstruccion("DEC R01");
+        decoder.decodificarInstruccion("INC R05");
+        decoder.decodificarInstruccion("INV R05");
+        //decodificarInstruccion();
+    }*/
 
 }
