@@ -8,9 +8,15 @@ public class contadorPrograma {
         this.siguienteInstruccion=0;
         this.contadorDeInstrucciones=0;
     }
-    
+
     public int getSiguienteInstruccion() {
-        return siguienteInstruccion;
+        this.siguienteInstruccion++;
+        return siguienteInstruccion-1;
+    }
+    
+    public int getInstruccion()
+    {
+        return this.siguienteInstruccion;
     }
 
     public int getContadorDeInstrucciones() {
@@ -20,8 +26,13 @@ public class contadorPrograma {
     public void setSiguienteInstruccion(int siguienteInstruccion) {
         this.siguienteInstruccion = siguienteInstruccion;
     }
-
-    public void incrementarContador(){
+    
+    public boolean incrementarContador(){
         this.contadorDeInstrucciones++;
+        if(this.contadorDeInstrucciones > 50000){
+            return false;
+        }
+        return true;
     }
+    
 }

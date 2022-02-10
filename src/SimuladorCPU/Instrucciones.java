@@ -36,7 +36,10 @@ public class Instrucciones {
         long i = Integer.reverseBytes((int) R[Rxx].getValor());
         R[Rxx].setValor(i);
     }
-
+    
+    public long valorRegistro(int registro){
+        return R[registro].getValor();
+    }
     public void NOP(){
 
     }

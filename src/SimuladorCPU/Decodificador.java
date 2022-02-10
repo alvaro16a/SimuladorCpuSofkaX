@@ -1,10 +1,14 @@
 package SimuladorCPU;
 
 public class Decodificador {
-    public Instrucciones matriz;
     Instrucciones instrucciones= new Instrucciones();
 
-    public void DecodificarInstruccion(String instruccion){
+    public Decodificador(){
+
+    }
+
+
+    public void DecodificarInstruccion(String instruccion, contadorPrograma counter){
         String funcion;
 
         if (instruccion.charAt(3) == ' ') {
@@ -70,19 +74,34 @@ public class Decodificador {
             case "JMP": {
                 String operador = instruccion.substring(4, instruccion.length());
                 int operador_1 = Integer.parseInt(operador);
+                counter.setSiguienteInstruccion(operador_1-1);
                 break;
             }
             case "JZ": {
                 String operador = instruccion.substring(3, instruccion.length());
                 int operador_1 = Integer.parseInt(operador);
+
+                if(instrucciones.valorRegistro(0) == 0L)
+                {
+                    counter.setSiguienteInstruccion(operador_1-1);
+                }
                 break;
             }
             case "NOP": {
                 break;
             }
+
+            default:
+            {
+                break;
+            }
         }
     }
-
+    
+    public long getValorRegistro(int registro){
+        return instrucciones.valorRegistro(registro);
+    }
+    
     public static int encontrarComa(String text) {
         for (int i = 0; i < text.length(); i++) {
             if (text.charAt(i) == ',') {
