@@ -1,5 +1,6 @@
 # SimuladorCpuSofkaX
 Reto Java
+
 Para ejecutar el programa se debe modificar el arreglo de Strings "subrutinas" por el que se quiera ejecutar.
 
 Ejemplo:
