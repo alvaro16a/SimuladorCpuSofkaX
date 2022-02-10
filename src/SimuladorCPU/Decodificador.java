@@ -16,7 +16,7 @@ public class Decodificador {
         } else {
             funcion = instruccion.substring(0, 2);
         }
-        System.out.println(funcion);
+        //System.out.println(funcion);
 
         switch (funcion) {
 

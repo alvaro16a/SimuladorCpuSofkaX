@@ -16,7 +16,7 @@ public class SimuladorCpu {
                 ejecucion=counter.incrementarContador();
         }
 
-        System.out.println(decoder.getValorRegistro(42));
+        System.out.println("El resultado de la operacion es: " + decoder.getValorRegistro(42));
 
     }
 
